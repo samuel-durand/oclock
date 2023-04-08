@@ -30,19 +30,18 @@
   </div>
   <div id="alarm">
     <h2>Réveil</h2>
-    <label for="">Heure :</label>
+    <label for="alarm-hours">Heure :</label>
     <input type="number" min="0" max="23" id="alarm-hours" value="0">
-    <label for="">Minutes :</label>
+    <label for="alarm-minutes">Minutes :</label>
     <input type="number" min="0" max="59" id="alarm-minutes" value="0">
-    <label for="">Message :</label>
+    <label for="alarm-message">Message :</label>
     <input type="text" id="alarm-message" value="">
     <button id="set-alarm">Regler</button>
     <button id="clear-alarm">Effacer</button>
+    <h3>Liste d'alarmes</h3>
+    <ul id="alarm-list"></ul>
   </div>
   
-  
-
-
   
         <script src="./index.js"></script>
 </body>
