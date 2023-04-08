@@ -92,3 +92,30 @@ function zeroPad(num) {
     return num.toString();
   }
 }
+
+var alarmInterval = null;
+var alarmHours = document.getElementById("alarm-hours");
+var alarmMinutes = document.getElementById("alarm-minutes")
+
+document.getElementById("set-alarm").addEventListener("click", function() {
+  // Régler l'alarme
+  var now = new Date();
+  var alarmTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), alarmHours.value, alarmMinutes.value, 0, 0);
+  var timeToAlarm = alarmTime.getTime() - now.getTime();
+  if (timeToAlarm <= 0) {
+    // L'heure de l'alarme est passée
+    alert("L'heure de l'alarme est passée!");
+    return;
+  }
+  alarmInterval = setTimeout(function() {
+    // Sonner l'alarme
+    alert("Réveil!!");
+  }, timeToAlarm);
+});
+
+document.getElementById("clear-alarm").addEventListener("click",function(){
+  // Effacer l'alarme
+  clearTimeout(alarmInterval);
+})
+
+
