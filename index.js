@@ -161,7 +161,26 @@ function updateAlarmList() {
 document.getElementById("set-alarm").addEventListener("click", setAlarm);
 document.getElementById("clear-alarm").addEventListener("click", clearAlarm);
 
+// minuteur 
 
+var timerInterval = null;
+var timeDisplay = document.getElementById("timer-display");
+var startTimeButton = document.getElementById("start-timer");
+var pauseTimerButton = document.getElementById("pause-timer");
+var resetTimerButton = document.getElementById("reset-time");
+
+var hoursInput = document.getElementById("hours-input");
+var minutesInput = document.getElementById("minutes-input");
+var secondsInput = document.getElementById("seconds-input");
+
+var hours = 0;
+var minutes = 0;
+var seconds = 0;
+
+
+function updateTimerDisplay(){
+  timeDisplay.innerHTML = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
+}
 
 
 
