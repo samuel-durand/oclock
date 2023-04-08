@@ -15,6 +15,8 @@
  <h1>Mon horloge</h1>
  <div id="clock">
   <div id="hours"></div>
+  <div id="minutes"></div>
+  <div id="seconds"></div>
 </div>
 
 <div id="chrono">
@@ -28,15 +30,16 @@
   </div>
   <div id="alarm">
     <h2>Réveil</h2>
-    <label for="alarm-hours">Heure :</label>
+    <label for="">Heure :</label>
     <input type="number" min="0" max="23" id="alarm-hours" value="0">
-    <label for="alarm-minutes">Minutes :</label>
+    <label for="">Minutes :</label>
     <input type="number" min="0" max="59" id="alarm-minutes" value="0">
-    <label for="alarm-text">Texte :</label>
-    <input type="text" id="alarm-text">
-    <button id="set-alarm">Régler</button>
+    <label for="">Message :</label>
+    <input type="text" id="alarm-message" value="">
+    <button id="set-alarm">Regler</button>
     <button id="clear-alarm">Effacer</button>
   </div>
+  
   
 
 

@@ -10,7 +10,7 @@ function updateClock(){
     minute: "2-digit",
     second: "2-digit"
   }).replace(/:/g, '<span class="clock-separator">:</span>');
-    var currentMinutes = currentTime.getMinutes();
+  var currentMinutes = currentTime.getMinutes();
   var currentSeconds = currentTime.getSeconds();
 
   
@@ -96,6 +96,39 @@ function zeroPad(num) {
     return num.toString();
   }
 }
+
+
+//alarme
+
+var alarmInterval = null;
+var alarmHours = document.getElementById("alarm-hours");
+var alarmMinutes = document.getElementById("alarm-minutes");
+var alarmMessage = document.getElementById("alarm-message");
+
+document.getElementById("set-alarm").addEventListener("click", function() {
+  // Régler l'alarme
+  var now = new Date();
+  var alarmTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), alarmHours.value, alarmMinutes.value, 0, 0);
+  var timeToAlarm = alarmTime.getTime() - now.getTime();
+  if (timeToAlarm <= 0) {
+    // L'heure de l'alarme est passée
+    alert("L'heure de l'alarme est passée!");
+    return;
+  }
+  alarmInterval = setTimeout(function() {
+    // Sonner l'alarme
+    var message = alarmMessage.value || "Réveil!!";
+    alert(message);
+  }, timeToAlarm);
+});
+
+document.getElementById("clear-alarm").addEventListener("click", function() {
+  // Effacer l'alarme
+  clearTimeout(alarmInterval);
+  alarmHours.value = 0;
+  alarmMinutes.value = 0;
+  alarmMessage.value = "";
+});
 
 
 
