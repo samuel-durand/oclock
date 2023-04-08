@@ -21,64 +21,66 @@ function updateClock(){
 setInterval(updateClock,1000)
 
 
-var timerInterval; // variable pour stocker l'intervalle du minuter
+var timerInterval; // variable pour stocker l'intervalle du minuteur
 
 function startTimer() {
-    // demarrer l'intervar du minuteur
-    timerInterval = setInterval(updateTimer,1000);
+  // Définir les heures, minutes et secondes restantes sur les valeurs maximales
+  document.getElementById("timer-hours").innerHTML = "00";
+  document.getElementById("timer-minutes").innerHTML = "00";
+  document.getElementById("timer-seconds").innerHTML = "00";
 
+  // Démarrer l'intervalle du minuteur
+  timerInterval = setInterval(updateTimer, 1000);
 }
 
-function stopTimer(){
-    //arreter l'intervalle du timer
-    clearInterval(timerInterval);
+function stopTimer() {
+  // Arrêter l'intervalle du minuteur
+  clearInterval(timerInterval);
 }
 
-function resetTimer(){
-    //réinitialiser le timer
-    stopTimer();
-    document.getElementById("hours").innerHTML ="00";
-    document.getElementById("minutes").innerHTML = "00";
-    document.getElementById("seconds").innerHTML = "00";
-
+function resetTimer() {
+  // Réinitialiser le minuteur
+  stopTimer();
+  document.getElementById("timer-hours").innerHTML = "00";
+  document.getElementById("timer-minutes").innerHTML = "00";
+  document.getElementById("timer-seconds").innerHTML = "00";
 }
-
 
 function updateTimer() {
-    // Obtenir les heures, minutes et secondes restantes
-    var remainingHours = document.getElementById("hours").innerHTML;
-    var remainingMinutes = document.getElementById("minutes").innerHTML;
-    var remainingSeconds = document.getElementById("seconds").innerHTML;
-  
-    // Soustraire une seconde
-    if (remainingSeconds == "00") {
-      if (remainingMinutes == "00") {
-        if (remainingHours == "00") {
-          // Le minuteur est terminé
-          stopTimer();
-          alert("Le minuteur est terminé!");
-          return;
-        }
-        remainingHours--;
-        remainingMinutes = 59;
-      } else {
-        remainingMinutes--;
+  // Obtenir les heures, minutes et secondes restantes
+  var remainingHours = document.getElementById("timer-hours").innerHTML;
+  var remainingMinutes = document.getElementById("timer-minutes").innerHTML;
+  var remainingSeconds = document.getElementById("timer-seconds").innerHTML;
+
+  // Soustraire une seconde
+  if (remainingSeconds == "00") {
+    if (remainingMinutes == "00") {
+      if (remainingHours == "00") {
+        // Le minuteur est terminé
+        stopTimer();
+        alert("Le minuteur est terminé!");
+        return;
       }
-      remainingSeconds = 59;
+      remainingHours--;
+      remainingMinutes = 59;
     } else {
-      remainingSeconds--;
+      remainingMinutes--;
     }
-  
-    // Ajouter un zéro devant les heures, minutes et secondes si elles sont inférieures à 10
-    remainingHours = (remainingHours < 10 ? "0" : "") + remainingHours;
-    remainingMinutes = (remainingMinutes < 10 ? "0" : "") + remainingMinutes;
-    remainingSeconds = (remainingSeconds < 10 ? "0" : "") + remainingSeconds;
-  
-    // Mettre à jour le minuteur
-    document.getElementById("hours").innerHTML = remainingHours;
-    document.getElementById("minutes").innerHTML = remainingMinutes;
-    document.getElementById("seconds").innerHTML = remainingSeconds;
+    remainingSeconds = 59;
+  } else {
+    remainingSeconds--;
   }
+
+  // Ajouter un zéro devant les heures, minutes et secondes si elles sont inférieures à 10
+  remainingHours = (remainingHours < 10 ? "0" : "") + remainingHours;
+  remainingMinutes = (remainingMinutes < 10 ? "0" : "") + remainingMinutes;
+  remainingSeconds = (remainingSeconds < 10 ? "0" : "") + remainingSeconds;
+
+  // Mettre à jour le minuteur
+  document.getElementById("timer-hours").innerHTML = remainingHours;
+  document.getElementById("timer-minutes").innerHTML = remainingMinutes;
+  document.getElementById("timer-seconds").innerHTML = remainingSeconds;
+}
 
 
 
