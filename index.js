@@ -113,9 +113,13 @@ document.getElementById("set-alarm").addEventListener("click", function() {
   }, timeToAlarm);
 });
 
-document.getElementById("clear-alarm").addEventListener("click",function(){
+document.getElementById("clear-alarm").addEventListener("click", function() {
   // Effacer l'alarme
   clearTimeout(alarmInterval);
-})
+  alarmHours.value = 0;
+  alarmMinutes.value = 0;
+});
+
+
 
 
