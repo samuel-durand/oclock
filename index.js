@@ -164,23 +164,64 @@ document.getElementById("clear-alarm").addEventListener("click", clearAlarm);
 // minuteur 
 
 var timerInterval = null;
-var timeDisplay = document.getElementById("timer-display");
-var startTimeButton = document.getElementById("start-timer");
-var pauseTimerButton = document.getElementById("pause-timer");
-var resetTimerButton = document.getElementById("reset-time");
+var timerHours = document.getElementById("timer-hours");
+var timerMinutes = document.getElementById("timer-minutes");
+var timerSeconds = document.getElementById("timer-seconds");
+var timerDisplay = document.getElementById("timer-display");
 
-var hoursInput = document.getElementById("hours-input");
-var minutesInput = document.getElementById("minutes-input");
-var secondsInput = document.getElementById("seconds-input");
+function startTimer() {
+  // Obtenir la durée du minuteur
+  var durationInSeconds = parseInt(timerHours.value) * 3600 + parseInt(timerMinutes.value) * 60 + parseInt(timerSeconds.value);
+  if (durationInSeconds <= 0) {
+    alert("Veuillez entrer une durée valide.");
+    return;
+  }
 
-var hours = 0;
-var minutes = 0;
-var seconds = 0;
-
-
-function updateTimerDisplay(){
-  timeDisplay.innerHTML = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
+  // Démarrer le minuteur
+  var startTime = new Date().getTime();
+  var endTime = startTime + durationInSeconds * 1000;
+  timerInterval = setInterval(function() {
+    var remainingTime = endTime - new Date().getTime();
+    if (remainingTime <= 0) {
+      // Le minuteur est terminé
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timerDisplay.innerText = "00:00:00";
+      alert("Minuteur terminé !");
+    } else {
+      // Mettre à jour l'affichage du minuteur
+      var remainingSeconds = Math.floor(remainingTime / 1000);
+      var hours = Math.floor(remainingSeconds / 3600);
+      remainingSeconds %= 3600;
+      var minutes = Math.floor(remainingSeconds / 60);
+      var seconds = remainingSeconds % 60;
+      timerDisplay.innerText = (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+    }
+  }, 1000);
 }
+
+function stopTimer() {
+  // Arrêter le minuteur
+  clearInterval(timerInterval);
+  timerInterval = null;
+}
+
+function resetTimer() {
+  // Réinitialiser le minuteur
+  clearInterval(timerInterval);
+  timerInterval = null;
+  timerHours.value = 0;
+  timerMinutes.value = 0;
+  timerSeconds.value = 0;
+  timerDisplay.innerText = "00:00:00";
+}
+
+document.getElementById("start-timer").addEventListener("click", startTimer);
+document.getElementById("stop-timer").addEventListener("click", stopTimer);
+document.getElementById("reset-timer").addEventListener("click", resetTimer);
+
+
+
 
 
 

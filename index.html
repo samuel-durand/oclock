@@ -44,15 +44,21 @@
   </div>
 
 
-  <h1>Minuteur</h1>
-<div id="timer">
-  <div id="timer-display">00:00:00</div>
-  <div id="timer-buttons">
+  <div id="timer">
+    <h2>Minuteur</h2>
+    <label for="">Heures :</label>
+    <input type="number" min="0" max="24" id="timer-hours" value="0">
+    <label for="">Minutes :</label>
+    <input type="number" min="0" max="59" id="timer-minutes" value="0">
+    <label for="">Secondes :</label>
+    <input type="number" min="0" max="59" id="timer-seconds" value="0">
     <button id="start-timer">Démarrer</button>
-    <button id="pause-timer">Pause</button>
+    <button id="stop-timer">Arrêter</button>
     <button id="reset-timer">Réinitialiser</button>
+    <h3 id="timer-display">00:00:00</h3>
   </div>
-</div>
+  
+  
 
   
   
