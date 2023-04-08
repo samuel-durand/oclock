@@ -21,70 +21,74 @@ function updateClock(){
 setInterval(updateClock,1000)
 
 
-var timerInterval; // variable pour stocker l'intervalle du minuteur
+var chronometer = null;
+var startTime = null;
+var elapsedTime = 0;
+var tours = [];
 
-function startTimer() {
-  // Définir les heures, minutes et secondes restantes sur les valeurs maximales
-  document.getElementById("timer-hours").innerHTML = "00";
-  document.getElementById("timer-minutes").innerHTML = "00";
-  document.getElementById("timer-seconds").innerHTML = "00";
+var chronoDisplay = document.getElementById("chrono-display");
+var chronoStartStopBtn = document.getElementById("chrono-startstop");
+var chronoTourBtn = document.getElementById("chrono-tour");
+var chronoResetBtn = document.getElementById("chrono-reset");
+var chronoToursList = document.getElementById("chrono-tours");
 
-  // Démarrer l'intervalle du minuteur
-  timerInterval = setInterval(updateTimer, 1000);
-}
-
-function stopTimer() {
-  // Arrêter l'intervalle du minuteur
-  clearInterval(timerInterval);
-}
-
-function resetTimer() {
-  // Réinitialiser le minuteur
-  stopTimer();
-  document.getElementById("timer-hours").innerHTML = "00";
-  document.getElementById("timer-minutes").innerHTML = "00";
-  document.getElementById("timer-seconds").innerHTML = "00";
-}
-
-function updateTimer() {
-  // Obtenir les heures, minutes et secondes restantes
-  var remainingHours = document.getElementById("timer-hours").innerHTML;
-  var remainingMinutes = document.getElementById("timer-minutes").innerHTML;
-  var remainingSeconds = document.getElementById("timer-seconds").innerHTML;
-
-  // Soustraire une seconde
-  if (remainingSeconds == "00") {
-    if (remainingMinutes == "00") {
-      if (remainingHours == "00") {
-        // Le minuteur est terminé
-        stopTimer();
-        alert("Le minuteur est terminé!");
-        return;
-      }
-      remainingHours--;
-      remainingMinutes = 59;
-    } else {
-      remainingMinutes--;
-    }
-    remainingSeconds = 59;
+chronoStartStopBtn.addEventListener("click", function() {
+  if (chronometer === null) {
+    // Démarrer le chronomètre
+    chronometer = setInterval(updateChrono, 10);
+    startTime = new Date().getTime() - elapsedTime;
+    chronoStartStopBtn.innerHTML = "Stop";
   } else {
-    remainingSeconds--;
+    // Arrêter le chronomètre
+    clearInterval(chronometer);
+    chronometer = null;
+    chronoStartStopBtn.innerHTML = "Start";
   }
+});
 
-  // Ajouter un zéro devant les heures, minutes et secondes si elles sont inférieures à 10
-  remainingHours = (remainingHours < 10 ? "0" : "") + remainingHours;
-  remainingMinutes = (remainingMinutes < 10 ? "0" : "") + remainingMinutes;
-  remainingSeconds = (remainingSeconds < 10 ? "0" : "") + remainingSeconds;
+chronoTourBtn.addEventListener("click", function() {
+  if (chronometer !== null) {
+    // Ajouter le temps actuel à la liste des tours
+    var tourTime = elapsedTime;
+    var minutes = Math.floor(tourTime / (1000 * 60));
+    tourTime -= minutes * (1000 * 60);
+    var seconds = Math.floor(tourTime / 1000);
+    tourTime -= seconds * 1000;
+    var centiseconds = Math.floor(tourTime / 10);
+    var tourString = zeroPad(minutes) + ":" + zeroPad(seconds) + ":" + zeroPad(centiseconds);
+    var tourItem = document.createElement("li");
+    tourItem.innerHTML = tourString;
+    chronoToursList.appendChild(tourItem);
+  }
+});
 
-  // Mettre à jour le minuteur
-  document.getElementById("timer-hours").innerHTML = remainingHours;
-  document.getElementById("timer-minutes").innerHTML = remainingMinutes;
-  document.getElementById("timer-seconds").innerHTML = remainingSeconds;
+chronoResetBtn.addEventListener("click", function() {
+  // Réinitialiser le chronomètre
+  clearInterval(chronometer);
+  chronometer = null;
+  elapsedTime = 0;
+  chronoDisplay.innerHTML = "00:00:00";
+  chronoStartStopBtn.innerHTML = "Start";
+  chronoToursList.innerHTML = "";
+});
+
+function updateChrono() {
+  // Mettre à jour le chronomètre
+  var currentTime = new Date().getTime();
+  elapsedTime = currentTime - startTime;
+  var minutes = Math.floor(elapsedTime / (1000 * 60));
+  elapsedTime -= minutes * (1000 * 60);
+  var seconds = Math.floor(elapsedTime / 1000);
+  elapsedTime -= seconds * 1000;
+  var centiseconds = Math.floor(elapsedTime / 10);
+  chronoDisplay.innerHTML = zeroPad(minutes) + ":" + zeroPad(seconds) + ":" + zeroPad(centiseconds);
 }
 
-
-
-// Ajouter des écouteurs d'événements aux boutons pour démarrer, arrêter et réinitialiser le minuteur
-document.getElementById("start").addEventListener("click", startTimer);
-document.getElementById("stop").addEventListener("click", stopTimer);
-document.getElementById("reset").addEventListener("click", resetTimer);
+function zeroPad(num) {
+  // Ajouter un zéro devant un chiffre s'il est inférieur à 10
+  if (num < 10) {
+    return "0" + num;
+  } else {
+    return num.toString();
+  }
+}
