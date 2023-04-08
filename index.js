@@ -18,8 +18,6 @@ function updateClock(){
   // mettre à jour l'horloge 
 
   document.getElementById("hours").innerHTML = currentHours;
-  document.getElementById("minutes").innerHTML = currentMinutes;
-  document.getElementById("seconds").innerHTML = currentSeconds;
 }
 
 setInterval(updateClock,1000);
@@ -213,14 +211,3 @@ function stopTimer() {
 
 document.getElementById("start-timer").addEventListener("click", startTimer);
 document.getElementById("stop-timer").addEventListener("click", stopTimer);
-
-
-
-
-
-
-
-
-
-
-
