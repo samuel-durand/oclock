@@ -1,24 +1,28 @@
 function updateClock(){
-    //obtenir l'heure actuelle 
-    var currentTime= new Date();
+  //obtenir l'heure actuelle 
+  var currentTime= new Date();
 
-    //obtenir les heure ,minute et secondes
-    var currentHours = currentTime.getHours();
+  //obtenir les heure ,minute et secondes 
+  var currentHours = currentTime.toLocaleString("fr-FR", {
+    hour: "2-digit",
+    hour12: false,
+    timeZone: "Europe/Paris",
+    minute: "2-digit",
+    second: "2-digit"
+  }).replace(/:/g, '<span class="clock-separator">:</span>');
     var currentMinutes = currentTime.getMinutes();
-    var currentSeconds = currentTime.getSeconds();
+  var currentSeconds = currentTime.getSeconds();
 
-    // ajouter un zéro devant les minutes et les seconde si elles sont inferieur à 10
-    currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
-    currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
+  
 
-    // mettre à jour l'horloge 
+  // mettre à jour l'horloge 
 
-    document.getElementById("hours").innerHTML = currentHours;
-    document.getElementById("minutes").innerHTML = currentMinutes;
-    document.getElementById("seconds").innerHTML = currentSeconds;
+  document.getElementById("hours").innerHTML = currentHours;
+  document.getElementById("minutes").innerHTML = currentMinutes;
+  document.getElementById("seconds").innerHTML = currentSeconds;
 }
 
-setInterval(updateClock,1000)
+setInterval(updateClock,1000);
 
 
 var chronometer = null;
@@ -93,32 +97,6 @@ function zeroPad(num) {
   }
 }
 
-var alarmInterval = null;
-var alarmHours = document.getElementById("alarm-hours");
-var alarmMinutes = document.getElementById("alarm-minutes")
-
-document.getElementById("set-alarm").addEventListener("click", function() {
-  // Régler l'alarme
-  var now = new Date();
-  var alarmTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), alarmHours.value, alarmMinutes.value, 0, 0);
-  var timeToAlarm = alarmTime.getTime() - now.getTime();
-  if (timeToAlarm <= 0) {
-    // L'heure de l'alarme est passée
-    alert("L'heure de l'alarme est passée!");
-    return;
-  }
-  alarmInterval = setTimeout(function() {
-    // Sonner l'alarme
-    alert("Réveil!!");
-  }, timeToAlarm);
-});
-
-document.getElementById("clear-alarm").addEventListener("click", function() {
-  // Effacer l'alarme
-  clearTimeout(alarmInterval);
-  alarmHours.value = 0;
-  alarmMinutes.value = 0;
-});
 
 
 
