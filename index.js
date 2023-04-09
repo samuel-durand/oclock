@@ -18,6 +18,7 @@ function updateClock(){
   // mettre à jour l'horloge 
 
   document.getElementById("hours").innerHTML = currentHours;
+  
 }
 
 setInterval(updateClock,1000);
@@ -211,3 +212,24 @@ function stopTimer() {
 
 document.getElementById("start-timer").addEventListener("click", startTimer);
 document.getElementById("stop-timer").addEventListener("click", stopTimer);
+
+
+
+function updateDate() {
+  var today = new Date();
+  var days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+  var months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+  var dayOfWeek = days[today.getDay()];
+  var dayOfMonth = today.getDate();
+  var month = months[today.getMonth()];
+  var year = today.getFullYear();
+  var dateElement = document.getElementById("date");
+  dateElement.innerText = dayOfWeek + " " + dayOfMonth + " " + month + " " + year;
+}
+
+updateDate();
+setInterval(updateDate, 1000*60*60*24); // Mettre à jour tous les jours à minuit
+
+
+
+
