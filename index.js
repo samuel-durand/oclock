@@ -103,6 +103,13 @@ var alarmMinutes = document.getElementById("alarm-minutes");
 var alarmMessage = document.getElementById("alarm-message");
 var alarmList = document.getElementById("alarm-list");
 
+var alarmIntervals = [];
+var alarmHours = document.getElementById("alarm-hours");
+var alarmMinutes = document.getElementById("alarm-minutes");
+var alarmMessage = document.getElementById("alarm-message");
+var alarmList = document.getElementById("alarm-list");
+var alarmSound = document.getElementById("alarm-sound");
+
 function setAlarm() {
   // Régler l'alarme
   var now = new Date();
@@ -114,13 +121,16 @@ function setAlarm() {
     return;
   }
   var alarmInterval = setTimeout(function() {
+    // Jouer le son
+    var audio = new Audio('song.mp3');
+    audio.play();
+  
     // Sonner l'alarme
     alert(alarmMessage.value || "Réveil!!");
     alarmIntervals.splice(alarmIntervals.indexOf(alarmInterval), 1);
     updateAlarmList();
   }, timeToAlarm);
-  alarmIntervals.push(alarmInterval);
-  updateAlarmList();
+  
 }
 
 function clearAlarm() {
@@ -130,6 +140,7 @@ function clearAlarm() {
   }
   alarmIntervals = [];
   updateAlarmList();
+  alarmSound.pause();
 }
 
 function updateAlarmList() {
@@ -159,6 +170,7 @@ function updateAlarmList() {
 
 document.getElementById("set-alarm").addEventListener("click", setAlarm);
 document.getElementById("clear-alarm").addEventListener("click", clearAlarm);
+
 
 // minuteur 
 
