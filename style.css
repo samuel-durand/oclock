@@ -11,6 +11,18 @@ body {
 }
 
 
+#horloge {
+    color: white;
+    transition: 0.3s ease;
+}
+
+#horloge:hover {
+    cursor: pointer;
+    color: #ffee00;
+}
+
+
+
 #clock {
     display: flex;
     justify-content: center;
@@ -60,11 +72,9 @@ h1 {
 }
 
 #chrono-startstop {
+    color: white;
     background-color: rgb(69, 218, 69);
     border: 5px solid rgb(81, 250, 81);
-
-    color: white;
-    transition: 0.3s;
 }
 
 #chrono-tour {
@@ -75,7 +85,6 @@ h1 {
 
 #chrono-reset {
     color: white;
-
     border: 5px solid rgb(255, 85, 85);
     background-color: rgb(243, 50, 50);
 }
@@ -107,11 +116,22 @@ h1 {
 
 
 #alarm input[type=text]{
+    color: white;
     display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 10px 12px;
     box-sizing: border-box;
+    caret-color: white;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
+
+#alarm input[type=text]:focus{
+    outline: none;
+}
+
 
 #alarm input[type=number]{
     align-items: center;
@@ -132,16 +152,7 @@ h1 {
 
 
 #alarm button {
-    position: relative;
-    width: 160px;
-    height: 50px;
-    line-height: 48px;
-    background: #000;
-    text-transform: uppercase;
-    font-size: 20px;
-    letter-spacing: 4px;
-    text-decoration: none;
-    -webkit-box-reflect: below 1px -webkit-linear-gradient(transparent, #0004);
+ margin: 10px;
 
 }
 
@@ -322,4 +333,52 @@ h1 {
     width: 100%;
     height: 50%;
     background: rgba(255, 255, 255, 0.1);
+}
+
+
+/*timer */
+
+#h2-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 40px;
+}
+
+#timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#timer input[type=number] {
+    margin: 5px;
+    width: 50px;
+    border: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#timer input[type=number]:focus {
+
+    outline: none;
+}
+
+#timer button {
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#start-timer {
+    background-color: rgb(69, 218, 69);
+    border: 5px solid rgb(81, 250, 81);
+    color: white;
+}
+
+#stop-timer {
+    color: white;
+    border: 5px solid rgb(255, 85, 85);
+    background-color: rgb(243, 50, 50);
 }
