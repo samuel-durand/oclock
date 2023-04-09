@@ -59,11 +59,49 @@
     <div id="timer-display"></div>
   </div>
   
-  
-  
-
-  
-  
         <script src="./index.js"></script>
+  
+        <script>
+var body = document.getElementsByTagName("body")[0];
+var flashes = 0;
+var interval = null;
+
+function flash() {
+  if (interval !== null) {
+    clearInterval(interval);
+  }
+  interval = setInterval(function() {
+    if (flashes >= 10) {
+      clearInterval(interval);
+      flashes = 0;
+      body.style.background = "";
+      body.style.color = "";
+      return;
+    }
+    if (flashes % 2 == 0) {
+      body.style.background = "white";
+      body.style.color = "black";
+    } else {
+      body.style.background = "black";
+      body.style.color = "white";
+    }
+    flashes++;
+  }, 200);
+}
+
+var konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+var konamiIndex = 0;
+document.addEventListener("keydown", function(e) {
+  if (e.keyCode === konamiCode[konamiIndex]) {
+    konamiIndex++;
+    if (konamiIndex === konamiCode.length) {
+      flash();
+      konamiIndex = 0;
+    }
+  } else {
+    konamiIndex = 0;
+  }
+});
+</script>
 </body>
 </html>
