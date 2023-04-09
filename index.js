@@ -231,5 +231,9 @@ updateDate();
 setInterval(updateDate, 1000*60*60*24); // Mettre à jour tous les jours à minuit
 
 
+window.addEventListener('load', function() {
+  document.body.classList.add('loaded');
+});
+
 
 

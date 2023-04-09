@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- Liens pour Boostrap 5 CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Liens pour Boostrap 5 JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+   
     <link rel="stylesheet" href="style.css">
     <title>horloge</title>
 </head>
-<body>
+<body >
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+  </div>
+  
+  <header>
+    <nav>
+      <ul>
+        <li><a href="https://github.com/samuel-durand" target="_blank">mon github</a></li>
+        <li><a href="https://github.com/samuel-durand/oclock" target="_blank">lien du projet</a></li>
+      </ul>
+    </nav>
+  </header>
+
  <h1 id="horloge">Mon horloge</h1>
  <div id="clock">
   <div id="hours"></div>
@@ -102,6 +112,29 @@ document.addEventListener("keydown", function(e) {
     konamiIndex = 0;
   }
 });
+</script>
+
+<footer id="myFooter">
+  <ul>
+    <li ><a href="https://github.com/samuel-durand"><i class="fa-github"></i>github</a></li>
+    <li><a href="https://github.com/samuel-durand/oclock">lien du projet</a></li>
+  </ul>
+</footer>
+
+
+<script>
+window.addEventListener('load', function() {
+  const footer = document.getElementById('myFooter');
+  const bodyHeight = document.body.offsetHeight;
+  const windowHeight = window.innerHeight;
+  if (bodyHeight < windowHeight) {
+    footer.style.position = 'absolute';
+    footer.style.bottom = '0';
+  } else {
+    footer.style.position = 'relative';
+  }
+});
+
 </script>
 </body>
 </html>
