@@ -1,8 +1,3 @@
-var alarmIntervals = [];
-var alarmHours = document.getElementById("alarm-hours");
-var alarmMinutes = document.getElementById("alarm-minutes");
-var alarmMessage = document.getElementById("alarm-message");
-var alarmList = document.getElementById("alarm-list");
 
 var alarmIntervals = [];
 var alarmHours = document.getElementById("alarm-hours");
@@ -22,16 +17,13 @@ function setAlarm() {
     return;
   }
   var alarmInterval = setTimeout(function() {
-    // Jouer le son
-    var audio = new Audio('song.mp3');
-    audio.play();
-  
     // Sonner l'alarme
     alert(alarmMessage.value || "Réveil!!");
     alarmIntervals.splice(alarmIntervals.indexOf(alarmInterval), 1);
     updateAlarmList();
   }, timeToAlarm);
-  
+  alarmIntervals.push(alarmInterval);
+  updateAlarmList(); // mettre à jour la liste des alarmes
 }
 
 function clearAlarm() {
@@ -40,12 +32,12 @@ function clearAlarm() {
     clearTimeout(alarmIntervals[i]);
   }
   alarmIntervals = [];
-  updateAlarmList();
-  alarmSound.pause();
+  updateAlarmList(); // mettre à jour la liste des alarmes
 }
 
 function updateAlarmList() {
   // Mettre à jour la liste des alarmes
+  var alarmList = document.getElementById("alarm-list");
   alarmList.innerHTML = "";
   for (var i = 0; i < alarmIntervals.length; i++) {
     var timeToAlarm = alarmIntervals[i]._idleTimeout;
@@ -62,11 +54,12 @@ function updateAlarmList() {
       var timeToAlarmInSeconds = Math.round(timeToAlarm / 1000);
       var minutes = Math.floor(timeToAlarmInSeconds / 60);
       var seconds = timeToAlarmInSeconds % 60;
-      alarmListItem.innerText = message + " à " + hours + "h" + minutes;
+alarmListItem.innerText = message + " à " + hours + "h" + minutes + "min";
     }
     alarmList.appendChild(alarmListItem);
   }
 }
+
 
 
 document.getElementById("set-alarm").addEventListener("click", setAlarm);
