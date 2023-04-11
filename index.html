@@ -9,10 +9,8 @@
     <title>horloge</title>
 </head>
 <body >
-  <div id="loader-wrapper">
-    <div id="loader"></div>
-  </div>
-  
+
+
   <header>
     <nav>
       <ul>
@@ -22,6 +20,13 @@
     </nav>
   </header>
 
+
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+  </div>
+  
+
+
  <h1 id="horloge">Mon horloge</h1>
  <div id="clock">
   <div id="hours"></div>
@@ -29,9 +34,9 @@
 
 
   <div>
-    <button onclick="goToPage('chrono.html')">chrono</button>
-    <button onclick="goToPage('minuteur.html')">minuteur</button>
-    <button onclick="goToPage('ring.html')">ring</button>
+    <button id="button-rgb" onclick="goToPage('chrono.html')"><span>chrono</span></button>
+    <button id="button-rgb" onclick="goToPage('minuteur.html')"><span>ring</span></button>
+    <button id="button-rgb" onclick="goToPage('ring.html')"><span>minuteur</span></button>
   </div>
 
   <script> 
