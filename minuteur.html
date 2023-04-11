@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="https://github.com/samuel-durand" target="_blank">mon github</a></li>
+            <li><a href="https://github.com/samuel-durand/oclock" target="_blank">lien du projet</a></li>
+          </ul>
+        </nav>
+      </header>
+
+    <h2 id="h2-timer">Minuteur</h2>
+
+    <div id="timer">
+      <label for="">Heures :</label>
+      <input type="number" min="0" max="23" id="timer-hours" value="0">
+      <label for="">Minutes :</label>
+      <input type="number" min="0" max="59" id="timer-minutes" value="0">
+      <label for="">Secondes :</label>
+      <input type="number" min="0" max="59" id="timer-seconds" value="0">
+      <button id="start-timer">Démarrer</button>
+      <button id="stop-timer">Arrêter</button>
+      <div id="timer-display"></div>
+    </div>
+
+    <script src="minuteur.js"></script>
+
+    <footer id="myFooter">
+        <ul>
+          <li ><a href="https://github.com/samuel-durand">mon github</a></li>
+          <li><a href="https://github.com/samuel-durand/oclock">lien du projet</a></li>
+        </ul>
+      </footer>
+</body>
+</html>

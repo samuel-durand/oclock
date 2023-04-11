@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="https://github.com/samuel-durand" target="_blank">mon github</a></li>
+        <li><a href="https://github.com/samuel-durand/oclock" target="_blank">lien du projet</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <h2 id="h2-ring">Réveil</h2>
+  <div id="alarm">
+    <label for="alarm-hours">Heure :</label>
+    <input type="number" min="0" max="23" id="alarm-hours" value="0">
+    <label for="alarm-minutes">Minutes :</label>
+    <input type="number" min="0" max="59" id="alarm-minutes" value="0">
+    <label for="alarm-message">Message :</label>
+    <input type="text" id="alarm-message" value="">
+    <button id="set-alarm"><span>Regler</span></button>
+    <audio id="alarm-sound">
+      <source src="song.mp3" type="audio/mp3">
+    </audio>
+    <button id="clear-alarm"><span>Effacer </span></button>
+  </div>
+  
+  <div>
+    <h3 id="h3-ring">Liste d'alarmes</h3>
+    <ul id="alarm-list"></ul>
+  </div>
+
+  <script src="ring.js"></script>
+
+  <footer id="myFooter">
+    <ul>
+      <li ><a href="https://github.com/samuel-durand">mon github</a></li>
+      <li><a href="https://github.com/samuel-durand/oclock">lien du projet</a></li>
+    </ul>
+  </footer>
+</body>
+</html>

@@ -16,12 +16,12 @@ body {
     font-family: 'Roboto', sans-serif;
     color: white;
     background: #000;
-    /*background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
-    animation: gradient 10s ease infinite;*/
+    animation: gradient 10s ease infinite;
   }
   
-  /*@keyframes gradient {
+  @keyframes gradient {
     0% {
       background-position: 0% 50%;
     }
@@ -31,7 +31,7 @@ body {
     100% {
       background-position: 0% 50%;
     }
-  }*/
+  }
 
 
   .loader-wrapper {
@@ -79,7 +79,6 @@ body {
     height: 60px;
     font-size: 20px;
     color: white;
-    background: #7803FF;
   }
 
   header nav ul li {
@@ -173,8 +172,8 @@ button {
     align-items: center;
     text-align: center;
     font-size: 60px;
-    color: #ff0;
-    margin: 60px auto;
+    color: white;
+    margin: 260px auto;
     cursor: pointer;
 }
 
@@ -190,13 +189,16 @@ h1 {
 }
 
 
+
+
+
 #chrono {
     display: flex inline;
     justify-content: center;
     flex-direction: column;
     text-align: center;
     align-items: center;
-    margin: 90px auto;
+    margin: 290px auto;
 
     
 }
@@ -242,6 +244,7 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin: 260px auto;
     
     
 }
@@ -252,7 +255,7 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 10px;
+    margin: 80px auto;
 }
 
 #alarm label {
@@ -488,7 +491,8 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 40px;
+    margin: 60px auto;
+    
 }
 
 #timer {
@@ -496,6 +500,7 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin:  260px auto;
 }
 
 #timer input[type=number] {
@@ -539,7 +544,6 @@ h1 {
     bottom: 0;
     height: 60px;
     width: 100%;
-    background: #7803FF;
 
   }
 
